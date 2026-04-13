@@ -92,14 +92,12 @@ input, select {
   border-radius: 10px;
 }
 
-/* PIX BOX */
+/* PIX */
 .pix {
   background: #1a1a1a;
   margin: 20px;
   padding: 15px;
   border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 0 10px #000;
 }
 
 /* FOOTER */
@@ -128,8 +126,8 @@ input, select {
 <div class="produtos">
 
 <div class="card">
-<img src="https://i.imgur.com/1ZQZ1Z1.jpg">
-<p>Cerveja Comum</p>
+<img src="https://images.unsplash.com/photo-1608270586620-248524c67de9">
+<p>Cerveja (Skol/Brahma/Antarctica)</p>
 <p>R$ 4,50</p>
 <div class="controls">
 <button class="add" onclick="add('Cerveja',4.5)">+</button>
@@ -138,7 +136,7 @@ input, select {
 </div>
 
 <div class="card">
-<img src="https://i.imgur.com/Vz81FZL.jpg">
+<img src="https://images.unsplash.com/photo-1618886614638-80e3c103d31a">
 <p>Itaipava/Kaiser</p>
 <p>R$ 4,00</p>
 <div class="controls">
@@ -148,7 +146,7 @@ input, select {
 </div>
 
 <div class="card">
-<img src="https://i.imgur.com/Tv6Qx9F.jpg">
+<img src="https://images.unsplash.com/photo-1584225064785-c62a8b43d148">
 <p>Heineken</p>
 <p>R$ 8,00</p>
 <div class="controls">
@@ -158,8 +156,8 @@ input, select {
 </div>
 
 <div class="card">
-<img src="https://i.imgur.com/YW6XKpK.jpg">
-<p>Coca-Cola</p>
+<img src="https://images.unsplash.com/photo-1622484212850-eb596d769edc">
+<p>Coca-Cola 2L</p>
 <p>R$ 12,50</p>
 <div class="controls">
 <button class="add" onclick="add('Coca-Cola',12.5)">+</button>
@@ -170,7 +168,7 @@ input, select {
 </div>
 
 <h2 style="text-align:center;">🛒 Carrinho</h2>
-<div id="carrinho" style="text-align:center;"></div>
+<div id="carrinho"></div>
 <p id="total" style="text-align:center;"></p>
 
 <div class="form">
@@ -180,16 +178,15 @@ input, select {
 <input id="horario" placeholder="Horário"><br>
 
 <select id="pagamento">
-<option value="PIX">PIX</option>
-<option value="Dinheiro">Dinheiro</option>
+<option>PIX</option>
+<option>Dinheiro</option>
 </select>
 </div>
 
 <div class="pix">
-💳 PAGAMENTO VIA PIX<br><br>
-Chave: <b>801.758.389-33</b><br>
+💳 PIX: 801.758.389-33<br>
 Nome: Veronica Gamarra Roman<br>
-Banco: Caixa Econômica Federal
+Banco: Caixa Econômica
 </div>
 
 <div style="text-align:center;">
