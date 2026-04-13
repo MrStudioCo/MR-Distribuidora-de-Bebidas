@@ -1,143 +1,38 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<title>Mr Distribuidora de Bebidas</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #121212;
-  color: white;
-}
-
-/* HEADER */
-.header {
-  background: #ff3d00;
-  padding: 20px;
-  text-align: center;
-}
-
-.header h1 {
-  margin: 0;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  50% {transform: scale(1.08);}
-}
-
-/* PROMO */
-.promo {
-  background: yellow;
-  color: black;
-  text-align: center;
-  padding: 10px;
-  font-weight: bold;
-}
-
-/* PRODUTOS */
-.produtos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.card {
-  background: #1e1e1e;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 12px;
-  width: 180px;
-  text-align: center;
-}
-
-.card img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.controls button {
-  margin: 5px;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-}
-
-.add {background: green; color:white;}
-.rem {background: red; color:white;}
-
-/* FORM */
-.form {
-  text-align: center;
-  margin: 20px;
-}
-
-input, select {
-  padding: 10px;
-  margin: 5px;
-  width: 80%;
-  max-width: 300px;
-}
-
-/* BOTÃO */
-.finalizar {
-  background: #25D366;
-  padding: 15px;
-  font-size: 18px;
-  border: none;
-  border-radius: 10px;
-}
-
-/* PIX */
-.pix {
-  background: #1a1a1a;
-  margin: 20px;
-  padding: 15px;
-  border-radius: 10px;
-}
-
-/* FOOTER */
-.footer {
-  background: #000;
-  padding: 20px;
-  text-align: center;
-  font-size: 12px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="header">
-  <h1>🍻 Mr Distribuidora de Bebidas</h1>
-  <p>Entrega rápida 🚀 • Bebidas geladas ❄️</p>
-</div>
-
-<div class="promo">
-🔥 PROMO: 6 cervejas por R$22 🔥
-</div>
-
-<h2 style="text-align:center;">🍺 Cardápio</h2>
-
 <div class="produtos">
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1608270586620-248524c67de9">
-<p>Cerveja (Skol/Brahma/Antarctica)</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Skol_beer.jpg">
+<p>Skol</p>
 <p>R$ 4,50</p>
 <div class="controls">
-<button class="add" onclick="add('Cerveja',4.5)">+</button>
-<button class="rem" onclick="remover('Cerveja')">-</button>
+<button class="add" onclick="add('Skol',4.5)">+</button>
+<button class="rem" onclick="remover('Skol')">-</button>
 </div>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1618886614638-80e3c103d31a">
-<p>Itaipava/Kaiser</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Brahma_beer.jpg">
+<p>Brahma</p>
+<p>R$ 4,50</p>
+<div class="controls">
+<button class="add" onclick="add('Brahma',4.5)">+</button>
+<button class="rem" onclick="remover('Brahma')">-</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Antarctica_beer.jpg">
+<p>Antarctica</p>
+<p>R$ 4,50</p>
+<div class="controls">
+<button class="add" onclick="add('Antarctica',4.5)">+</button>
+<button class="rem" onclick="remover('Antarctica')">-</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Itaipava_beer.jpg">
+<p>Itaipava</p>
 <p>R$ 4,00</p>
 <div class="controls">
 <button class="add" onclick="add('Itaipava',4)">+</button>
@@ -146,7 +41,17 @@ input, select {
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1584225064785-c62a8b43d148">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Kaiser_beer.jpg">
+<p>Kaiser</p>
+<p>R$ 4,00</p>
+<div class="controls">
+<button class="add" onclick="add('Kaiser',4)">+</button>
+<button class="rem" onclick="remover('Kaiser')">-</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Heineken_beer.jpg">
 <p>Heineken</p>
 <p>R$ 8,00</p>
 <div class="controls">
@@ -156,119 +61,13 @@ input, select {
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1622484212850-eb596d769edc">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Coca-Cola_2L.jpg">
 <p>Coca-Cola 2L</p>
 <p>R$ 12,50</p>
 <div class="controls">
-<button class="add" onclick="add('Coca-Cola',12.5)">+</button>
-<button class="rem" onclick="remover('Coca-Cola')">-</button>
+<button class="add" onclick="add('Coca-Cola 2L',12.5)">+</button>
+<button class="rem" onclick="remover('Coca-Cola 2L')">-</button>
 </div>
 </div>
 
 </div>
-
-<h2 style="text-align:center;">🛒 Carrinho</h2>
-<div id="carrinho"></div>
-<p id="total" style="text-align:center;"></p>
-
-<div class="form">
-<input id="nome" placeholder="Seu nome"><br>
-<input id="endereco" placeholder="Endereço"><br>
-<input id="telefone" placeholder="Telefone"><br>
-<input id="horario" placeholder="Horário"><br>
-
-<select id="pagamento">
-<option>PIX</option>
-<option>Dinheiro</option>
-</select>
-</div>
-
-<div class="pix">
-💳 PIX: 801.758.389-33<br>
-Nome: Veronica Gamarra Roman<br>
-Banco: Caixa Econômica
-</div>
-
-<div style="text-align:center;">
-<button class="finalizar" onclick="finalizar()">Finalizar Pedido</button>
-</div>
-
-<div class="footer">
-📍 Rua Rachel de Queiroz Nº 425 - Por do Sol / Palotina-PR<br>
-📄 CNPJ: 55.522.790/0001-67<br><br>
-🚫 Não vendemos bebidas alcoólicas para menores de 18 anos.
-</div>
-
-<script>
-let carrinho = {};
-
-function add(nome, preco){
-  if(!carrinho[nome]){
-    carrinho[nome] = {qtd:0, preco:preco};
-  }
-  carrinho[nome].qtd++;
-  mostrar();
-}
-
-function remover(nome){
-  if(carrinho[nome]){
-    carrinho[nome].qtd--;
-    if(carrinho[nome].qtd <= 0) delete carrinho[nome];
-  }
-  mostrar();
-}
-
-function mostrar(){
-  let html = "";
-  let total = 0;
-
-  for(let item in carrinho){
-    let dados = carrinho[item];
-    let subtotal = dados.qtd * dados.preco;
-    total += subtotal;
-    html += `${item} x${dados.qtd} = R$ ${subtotal.toFixed(2)}<br>`;
-  }
-
-  let frete = total >= 30 ? 0 : 5;
-  html += `<br>Frete: R$ ${frete.toFixed(2)}`;
-  total += frete;
-
-  document.getElementById("carrinho").innerHTML = html;
-  document.getElementById("total").innerHTML = "Total: R$ " + total.toFixed(2);
-}
-
-function finalizar(){
-  let nome = document.getElementById("nome").value;
-  let endereco = document.getElementById("endereco").value;
-  let telefone = document.getElementById("telefone").value;
-  let horario = document.getElementById("horario").value;
-  let pagamento = document.getElementById("pagamento").value;
-
-  let mensagem = "🍻 Pedido:%0A";
-
-  let total = 0;
-
-  for(let item in carrinho){
-    let dados = carrinho[item];
-    let subtotal = dados.qtd * dados.preco;
-    total += subtotal;
-    mensagem += `${item} x${dados.qtd} = R$ ${subtotal.toFixed(2)}%0A`;
-  }
-
-  let frete = total >= 30 ? 0 : 5;
-  total += frete;
-
-  mensagem += `%0AFrete: R$ ${frete.toFixed(2)}`;
-  mensagem += `%0ATotal: R$ ${total.toFixed(2)}`;
-  mensagem += `%0APagamento: ${pagamento}`;
-  mensagem += `%0A%0ANome: ${nome}`;
-  mensagem += `%0AEndereço: ${endereco}`;
-  mensagem += `%0ATelefone: ${telefone}`;
-  mensagem += `%0AHorário: ${horario}`;
-
-  window.open(`https://wa.me/5544997410776?text=${mensagem}`);
-}
-</script>
-
-</body>
-</html>
