@@ -8,199 +8,226 @@
 body {
   margin: 0;
   font-family: Arial;
-  background: black;
+  background: #0d0d0d;
   color: white;
-  overflow-x: hidden;
 }
 
-/* NOME ANIMADO */
-h1 {
-  text-align: center;
-  margin-top: 20px;
-  color: #00ff88;
-  animation: glow 2s infinite alternate, float 3s infinite;
+/* BANNER */
+.banner img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
 }
 
-@keyframes glow {
-  from { text-shadow: 0 0 5px #00ff88; }
-  to { text-shadow: 0 0 20px #00ff88; }
+/* MENU */
+.menu {
+  display: flex;
+  justify-content: center;
+  background: #00cc66;
 }
 
-@keyframes float {
-  50% { transform: translateY(-10px); }
+.menu button {
+  padding: 15px;
+  border: none;
+  background: transparent;
+  font-weight: bold;
+  cursor: pointer;
 }
+
+/* PÁGINAS */
+.page { display: none; padding: 20px; }
+.active { display: block; }
 
 /* PRODUTOS */
-.produtos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .card {
   background: #111;
   margin: 10px;
   padding: 15px;
   border-radius: 10px;
-  width: 180px;
-  text-align: center;
-  border: 1px solid #00ff88;
+  border: 1px solid #00cc66;
 }
 
 button {
-  margin-top: 10px;
-  padding: 8px;
-  border: none;
+  margin: 5px;
+  padding: 5px 10px;
   border-radius: 5px;
-  background: #00ff88;
-  color: black;
+  border: none;
   cursor: pointer;
 }
 
-/* WHATS FLUTUANTE */
-.whatsapp {
+.add { background: green; color:white; }
+.rem { background: red; color:white; }
+
+/* RELÓGIO */
+.relogio {
+  text-align: center;
+  font-size: 20px;
+  margin: 10px;
+  color: #00ff88;
+}
+
+/* WHATSAPP */
+.whats {
   position: fixed;
   bottom: 20px;
   right: 20px;
   background: #25D366;
-  border-radius: 50%;
   padding: 15px;
+  border-radius: 50%;
   font-size: 25px;
-  color: white;
   text-decoration: none;
 }
 
-/* GELO CAINDO */
-.gelo {
-  position: fixed;
-  top: -10px;
-  color: #00ffcc;
-  font-size: 10px;
-  animation: cair linear infinite;
-}
-
-@keyframes cair {
-  to {
-    transform: translateY(100vh);
-  }
-}
-
-/* RODAPÉ */
+/* FOOTER */
 .footer {
   text-align: center;
-  margin-top: 30px;
+  padding: 20px;
   font-size: 12px;
-  color: #aaa;
 }
 </style>
 </head>
 
 <body>
 
-<h1>🍻 Mr Distribuidora de Bebidas</h1>
+<!-- BANNER -->
+<div class="banner">
+<img src="banner.png">
+</div>
 
-<div class="produtos">
+<!-- RELÓGIO -->
+<div class="relogio" id="relogio"></div>
+
+<!-- MENU -->
+<div class="menu">
+<button onclick="mostrar('produtos')">Produtos</button>
+<button onclick="mostrar('carrinho')">Carrinho</button>
+</div>
+
+<!-- PRODUTOS -->
+<div id="produtos" class="page active">
 
 <div class="card">
-<p>Skol / Brahma / Antarctica</p>
-<p>R$ 4,50</p>
-<button onclick="add('Cerveja',4.5)">Adicionar</button>
+Skol / Brahma / Antarctica - R$ 4,50<br>
+<button class="add" onclick="add('Cerveja',4.5)">+</button>
+<button class="rem" onclick="remover('Cerveja')">-</button>
 </div>
 
 <div class="card">
-<p>Itaipava / Kaiser</p>
-<p>R$ 4,00</p>
-<button onclick="add('Itaipava',4)">Adicionar</button>
+Itaipava / Kaiser - R$ 4,00<br>
+<button class="add" onclick="add('Itaipava',4)">+</button>
+<button class="rem" onclick="remover('Itaipava')">-</button>
 </div>
 
 <div class="card">
-<p>Heineken</p>
-<p>R$ 8,00</p>
-<button onclick="add('Heineken',8)">Adicionar</button>
+Heineken - R$ 8,00<br>
+<button class="add" onclick="add('Heineken',8)">+</button>
+<button class="rem" onclick="remover('Heineken')">-</button>
 </div>
 
 <div class="card">
-<p>Coca-Cola 2L</p>
-<p>R$ 12,50</p>
-<button onclick="add('Coca-Cola',12.5)">Adicionar</button>
+Coca-Cola 2L - R$ 12,50<br>
+<button class="add" onclick="add('Coca-Cola',12.5)">+</button>
+<button class="rem" onclick="remover('Coca-Cola')">-</button>
 </div>
 
 </div>
 
-<h2 style="text-align:center;">🛒 Carrinho</h2>
-<div id="carrinho" style="text-align:center;"></div>
-<p id="total" style="text-align:center;"></p>
+<!-- CARRINHO -->
+<div id="carrinho" class="page">
 
-<div style="text-align:center;">
+<h2>Seu Pedido</h2>
+<div id="lista"></div>
+<p id="total"></p>
+
 <input id="nome" placeholder="Seu nome"><br>
 <input id="endereco" placeholder="Endereço"><br>
 <input id="telefone" placeholder="Telefone"><br>
-</div>
+<input id="horario" placeholder="Horário entrega"><br>
 
-<div style="text-align:center;">
 <button onclick="finalizar()">Finalizar Pedido</button>
+
 </div>
 
-<a class="whatsapp" href="https://wa.me/5544997410776">📲</a>
+<!-- WHATS -->
+<a class="whats" href="https://wa.me/5544997410776">📲</a>
 
+<!-- FOOTER -->
 <div class="footer">
-📍 Rua Rachel de Queiroz Nº 425 - Por do Sol / Palotina-PR<br>
+📍 Rua Rachel de Queiroz Nº 425 - Palotina-PR<br>
 📄 CNPJ: 55.522.790/0001-67<br>
-💳 PIX: 801.758.389-33 - Veronica Gamarra Roman (Caixa)<br><br>
-🚫 Proibida venda para menores de 18 anos
+💳 PIX: 801.758.389-33 - Veronica Gamarra Roman<br>
+🚫 Proibido para menores de 18 anos
 </div>
 
 <script>
-let carrinho = [];
+let carrinho = {};
 
-function add(nome, preco){
-  carrinho.push({nome, preco});
-  mostrar();
+function mostrar(pagina){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(pagina).classList.add("active");
 }
 
-function mostrar(){
-  let html = "";
-  let total = 0;
+function add(nome, preco){
+  if(!carrinho[nome]) carrinho[nome]={qtd:0,preco:preco};
+  carrinho[nome].qtd++;
+  atualizar();
+}
 
-  carrinho.forEach(item=>{
-    html += item.nome + " - R$ " + item.preco + "<br>";
-    total += item.preco;
-  });
+function remover(nome){
+  if(carrinho[nome]){
+    carrinho[nome].qtd--;
+    if(carrinho[nome].qtd<=0) delete carrinho[nome];
+  }
+  atualizar();
+}
 
-  document.getElementById("carrinho").innerHTML = html;
-  document.getElementById("total").innerHTML = "Total: R$ " + total.toFixed(2);
+function atualizar(){
+  let html="";
+  let total=0;
+
+  for(let item in carrinho){
+    let d=carrinho[item];
+    let sub=d.qtd*d.preco;
+    total+=sub;
+    html+=`${item} x${d.qtd} = R$ ${sub.toFixed(2)}<br>`;
+  }
+
+  document.getElementById("lista").innerHTML=html;
+  document.getElementById("total").innerHTML="Total: R$ "+total.toFixed(2);
 }
 
 function finalizar(){
-  let nome = document.getElementById("nome").value;
-  let endereco = document.getElementById("endereco").value;
-  let telefone = document.getElementById("telefone").value;
+  let nome=document.getElementById("nome").value;
+  let endereco=document.getElementById("endereco").value;
+  let telefone=document.getElementById("telefone").value;
+  let horario=document.getElementById("horario").value;
 
-  let msg = "🍻 Pedido:%0A";
+  let msg="Olá tudo bem queria finalizar meu pedido%0A%0A";
 
-  carrinho.forEach(item=>{
-    msg += item.nome + " - R$ " + item.preco + "%0A";
-  });
+  let total=0;
 
-  msg += "%0ATotal: R$ " + carrinho.reduce((a,b)=>a+b.preco,0);
-  msg += "%0A%0ANome: " + nome;
-  msg += "%0AEndereço: " + endereco;
-  msg += "%0ATelefone: " + telefone;
+  for(let item in carrinho){
+    let d=carrinho[item];
+    let sub=d.qtd*d.preco;
+    total+=sub;
+    msg+=`${item} x${d.qtd} = R$ ${sub.toFixed(2)}%0A`;
+  }
 
-  window.open("https://wa.me/5544997410776?text="+msg);
+  msg+=`%0ATotal: R$ ${total}`;
+  msg+=`%0A%0ANome: ${nome}`;
+  msg+=`%0AEndereço: ${endereco}`;
+  msg+=`%0ATelefone: ${telefone}`;
+  msg+=`%0AHorário: ${horario}`;
+
+  window.open(`https://wa.me/5544997410776?text=${msg}`);
 }
 
-/* GELO CAINDO */
+/* RELÓGIO */
 setInterval(()=>{
-  let gelo = document.createElement("div");
-  gelo.classList.add("gelo");
-  gelo.style.left = Math.random()*100+"vw";
-  gelo.style.animationDuration = (Math.random()*3+2)+"s";
-  gelo.innerHTML = "❄️";
-  document.body.appendChild(gelo);
-
-  setTimeout(()=>gelo.remove(),5000);
-},300);
+  let agora=new Date();
+  document.getElementById("relogio").innerHTML=
+  "⏰ "+agora.toLocaleTimeString();
+},1000);
 </script>
 
 </body>
