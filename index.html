@@ -8,65 +8,75 @@
 body {
   margin: 0;
   font-family: Arial;
-  background: #0d0d0d;
+  background: #0b0b0b;
   color: white;
 }
 
 /* BANNER */
 .banner img {
   width: 100%;
-  max-height: 350px;
-  object-fit: cover;
+  height: auto;
 }
-
-/* MENU */
-.menu {
-  display: flex;
-  justify-content: center;
-  background: #00cc66;
-}
-
-.menu button {
-  padding: 15px;
-  border: none;
-  background: transparent;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* PÁGINAS */
-.page { display: none; padding: 20px; }
-.active { display: block; }
-
-/* PRODUTOS */
-.card {
-  background: #111;
-  margin: 10px;
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #00cc66;
-}
-
-button {
-  margin: 5px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-}
-
-.add { background: green; color:white; }
-.rem { background: red; color:white; }
 
 /* RELÓGIO */
 .relogio {
   text-align: center;
-  font-size: 20px;
-  margin: 10px;
+  font-size: 18px;
   color: #00ff88;
+  margin: 10px;
 }
 
-/* WHATSAPP */
+/* PRODUTOS */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background: #111;
+  border: 1px solid #00ff88;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.card button {
+  margin: 5px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add { background: green; color: white; }
+.rem { background: red; color: white; }
+
+/* CARRINHO */
+.carrinho {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* INPUTS */
+input {
+  padding: 8px;
+  margin: 5px;
+  width: 250px;
+}
+
+/* FINALIZAR */
+.finalizar {
+  background: #25D366;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* WHATS FLOAT */
 .whats {
   position: fixed;
   bottom: 20px;
@@ -74,15 +84,16 @@ button {
   background: #25D366;
   padding: 15px;
   border-radius: 50%;
-  font-size: 25px;
+  font-size: 24px;
   text-decoration: none;
 }
 
 /* FOOTER */
 .footer {
   text-align: center;
-  padding: 20px;
   font-size: 12px;
+  margin-top: 30px;
+  color: #aaa;
 }
 </style>
 </head>
@@ -97,35 +108,33 @@ button {
 <!-- RELÓGIO -->
 <div class="relogio" id="relogio"></div>
 
-<!-- MENU -->
-<div class="menu">
-<button onclick="mostrar('produtos')">Produtos</button>
-<button onclick="mostrar('carrinho')">Carrinho</button>
-</div>
-
 <!-- PRODUTOS -->
-<div id="produtos" class="page active">
+<div class="container">
 
 <div class="card">
-Skol / Brahma / Antarctica - R$ 4,50<br>
+<p>Skol / Brahma / Antarctica</p>
+<p>R$ 4,50</p>
 <button class="add" onclick="add('Cerveja',4.5)">+</button>
 <button class="rem" onclick="remover('Cerveja')">-</button>
 </div>
 
 <div class="card">
-Itaipava / Kaiser - R$ 4,00<br>
+<p>Itaipava / Kaiser</p>
+<p>R$ 4,00</p>
 <button class="add" onclick="add('Itaipava',4)">+</button>
 <button class="rem" onclick="remover('Itaipava')">-</button>
 </div>
 
 <div class="card">
-Heineken - R$ 8,00<br>
+<p>Heineken</p>
+<p>R$ 8,00</p>
 <button class="add" onclick="add('Heineken',8)">+</button>
 <button class="rem" onclick="remover('Heineken')">-</button>
 </div>
 
 <div class="card">
-Coca-Cola 2L - R$ 12,50<br>
+<p>Coca-Cola 2L</p>
+<p>R$ 12,50</p>
 <button class="add" onclick="add('Coca-Cola',12.5)">+</button>
 <button class="rem" onclick="remover('Coca-Cola')">-</button>
 </div>
@@ -133,19 +142,17 @@ Coca-Cola 2L - R$ 12,50<br>
 </div>
 
 <!-- CARRINHO -->
-<div id="carrinho" class="page">
-
-<h2>Seu Pedido</h2>
+<div class="carrinho">
+<h2>🛒 Seu Pedido</h2>
 <div id="lista"></div>
 <p id="total"></p>
 
 <input id="nome" placeholder="Seu nome"><br>
 <input id="endereco" placeholder="Endereço"><br>
 <input id="telefone" placeholder="Telefone"><br>
-<input id="horario" placeholder="Horário entrega"><br>
+<input id="horario" placeholder="Horário de entrega"><br>
 
-<button onclick="finalizar()">Finalizar Pedido</button>
-
+<button class="finalizar" onclick="finalizar()">Finalizar Pedido</button>
 </div>
 
 <!-- WHATS -->
@@ -155,20 +162,17 @@ Coca-Cola 2L - R$ 12,50<br>
 <div class="footer">
 📍 Rua Rachel de Queiroz Nº 425 - Palotina-PR<br>
 📄 CNPJ: 55.522.790/0001-67<br>
-💳 PIX: 801.758.389-33 - Veronica Gamarra Roman<br>
-🚫 Proibido para menores de 18 anos
+💳 PIX: 801.758.389-33 - Veronica Gamarra Roman (Caixa)<br><br>
+🚫 Proibida venda para menores de 18 anos
 </div>
 
 <script>
 let carrinho = {};
 
-function mostrar(pagina){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(pagina).classList.add("active");
-}
-
 function add(nome, preco){
-  if(!carrinho[nome]) carrinho[nome]={qtd:0,preco:preco};
+  if(!carrinho[nome]){
+    carrinho[nome] = {qtd:0, preco:preco};
+  }
   carrinho[nome].qtd++;
   atualizar();
 }
@@ -176,57 +180,58 @@ function add(nome, preco){
 function remover(nome){
   if(carrinho[nome]){
     carrinho[nome].qtd--;
-    if(carrinho[nome].qtd<=0) delete carrinho[nome];
+    if(carrinho[nome].qtd <= 0){
+      delete carrinho[nome];
+    }
   }
   atualizar();
 }
 
 function atualizar(){
-  let html="";
-  let total=0;
+  let html = "";
+  let total = 0;
 
   for(let item in carrinho){
-    let d=carrinho[item];
-    let sub=d.qtd*d.preco;
-    total+=sub;
-    html+=`${item} x${d.qtd} = R$ ${sub.toFixed(2)}<br>`;
+    let d = carrinho[item];
+    let sub = d.qtd * d.preco;
+    total += sub;
+    html += `${item} x${d.qtd} = R$ ${sub.toFixed(2)}<br>`;
   }
 
-  document.getElementById("lista").innerHTML=html;
-  document.getElementById("total").innerHTML="Total: R$ "+total.toFixed(2);
+  document.getElementById("lista").innerHTML = html;
+  document.getElementById("total").innerHTML = "Total: R$ " + total.toFixed(2);
 }
 
 function finalizar(){
-  let nome=document.getElementById("nome").value;
-  let endereco=document.getElementById("endereco").value;
-  let telefone=document.getElementById("telefone").value;
-  let horario=document.getElementById("horario").value;
+  let nome = document.getElementById("nome").value;
+  let endereco = document.getElementById("endereco").value;
+  let telefone = document.getElementById("telefone").value;
+  let horario = document.getElementById("horario").value;
 
-  let msg="Olá tudo bem queria finalizar meu pedido%0A%0A";
-
-  let total=0;
+  let msg = "Olá tudo bem queria finalizar meu pedido%0A%0A";
+  let total = 0;
 
   for(let item in carrinho){
-    let d=carrinho[item];
-    let sub=d.qtd*d.preco;
-    total+=sub;
-    msg+=`${item} x${d.qtd} = R$ ${sub.toFixed(2)}%0A`;
+    let d = carrinho[item];
+    let sub = d.qtd * d.preco;
+    total += sub;
+    msg += `${item} x${d.qtd} = R$ ${sub.toFixed(2)}%0A`;
   }
 
-  msg+=`%0ATotal: R$ ${total}`;
-  msg+=`%0A%0ANome: ${nome}`;
-  msg+=`%0AEndereço: ${endereco}`;
-  msg+=`%0ATelefone: ${telefone}`;
-  msg+=`%0AHorário: ${horario}`;
+  msg += `%0ATotal: R$ ${total.toFixed(2)}`;
+  msg += `%0A%0ANome: ${nome}`;
+  msg += `%0AEndereço: ${endereco}`;
+  msg += `%0ATelefone: ${telefone}`;
+  msg += `%0AHorário: ${horario}`;
 
   window.open(`https://wa.me/5544997410776?text=${msg}`);
 }
 
 /* RELÓGIO */
 setInterval(()=>{
-  let agora=new Date();
-  document.getElementById("relogio").innerHTML=
-  "⏰ "+agora.toLocaleTimeString();
+  let agora = new Date();
+  document.getElementById("relogio").innerHTML =
+    "⏰ " + agora.toLocaleTimeString();
 },1000);
 </script>
 
