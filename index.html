@@ -1,1 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Mr Distribuidora de Bebidas</title>
 
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #121212;
+  color: white;
+}
+
+/* HEADER */
+.header {
+  background: #ff3d00;
+  padding: 20px;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  50% {transform: scale(1.08);}
+}
+
+/* PROMO */
+.promo {
+  background: yellow;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+}
+
+/* PRODUTOS */
+.produtos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background: #1e1e1e;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  width: 180px;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.controls button {
+  margin: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.add {background: green; color:white;}
+.rem {background: red; color:white;}
+
+/* FORM */
+.form {
+  text-align: center;
+  margin: 20px;
+}
+
+input, select {
+  padding: 10px;
+  margin: 5px;
+  width: 80%;
+  max-width: 300px;
+}
+
+/* BOTÃO */
+.finalizar {
+  background: #25D366;
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+}
+
+/* PIX BOX */
+.pix {
+  background: #1a1a1a;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px #000;
+}
+
+/* FOOTER */
+.footer {
+  background: #000;
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>🍻 Mr Distribuidora de Bebidas</h1>
+  <p>Entrega rápida 🚀 • Bebidas geladas ❄️</p>
+</div>
+
+<div class="promo">
+🔥 PROMO: 6 cervejas por R$22 🔥
+</div>
+
+<h2 style="text-align:center;">🍺 Cardápio</h2>
+
+<div class="produtos">
+
+<div class="card">
+<img src="https://i.imgur.com/1ZQZ1Z1.jpg">
+<p>Cerveja Comum</p>
+<p>R$ 4,50</p>
+<div class="controls">
+<button class="add" onclick="add('Cerveja',4.5)">+</button>
+<button class="rem" onclick="remover('Cerveja')">-</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://i.imgur.com/Vz81FZL.jpg">
+<p>Itaipava/Kaiser</p>
+<p>R$ 4,00</p>
+<div class="controls">
+<button class="add" onclick="add('Itaipava',4)">+</button>
+<button class="rem" onclick="remover('Itaipava')">-</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://i.imgur.com/Tv6Qx9F.jpg">
+<p>Heineken</p>
+<p>R$ 8,00</p>
+<div class="controls">
+<button class="add" onclick="add('Heineken',8)">+</button>
+<button class="rem" onclick="remover('Heineken')">-</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://i.imgur.com/YW6XKpK.jpg">
+<p>Coca-Cola</p>
+<p>R$ 12,50</p>
+<div class="controls">
+<button class="add" onclick="add('Coca-Cola',12.5)">+</button>
+<button class="rem" onclick="remover('Coca-Cola')">-</button>
+</div>
+</div>
+
+</div>
+
+<h2 style="text-align:center;">🛒 Carrinho</h2>
+<div id="carrinho" style="text-align:center;"></div>
+<p id="total" style="text-align:center;"></p>
+
+<div class="form">
+<input id="nome" placeholder="Seu nome"><br>
+<input id="endereco" placeholder="Endereço"><br>
+<input id="telefone" placeholder="Telefone"><br>
+<input id="horario" placeholder="Horário"><br>
+
+<select id="pagamento">
+<option value="PIX">PIX</option>
+<option value="Dinheiro">Dinheiro</option>
+</select>
+</div>
+
+<div class="pix">
+💳 PAGAMENTO VIA PIX<br><br>
+Chave: <b>801.758.389-33</b><br>
+Nome: Veronica Gamarra Roman<br>
+Banco: Caixa Econômica Federal
+</div>
+
+<div style="text-align:center;">
+<button class="finalizar" onclick="finalizar()">Finalizar Pedido</button>
+</div>
+
+<div class="footer">
+📍 Rua Rachel de Queiroz Nº 425 - Por do Sol / Palotina-PR<br>
+📄 CNPJ: 55.522.790/0001-67<br><br>
+🚫 Não vendemos bebidas alcoólicas para menores de 18 anos.
+</div>
+
+<script>
+let carrinho = {};
+
+function add(nome, preco){
+  if(!carrinho[nome]){
+    carrinho[nome] = {qtd:0, preco:preco};
+  }
+  carrinho[nome].qtd++;
+  mostrar();
+}
+
+function remover(nome){
+  if(carrinho[nome]){
+    carrinho[nome].qtd--;
+    if(carrinho[nome].qtd <= 0) delete carrinho[nome];
+  }
+  mostrar();
+}
+
+function mostrar(){
+  let html = "";
+  let total = 0;
+
+  for(let item in carrinho){
+    let dados = carrinho[item];
+    let subtotal = dados.qtd * dados.preco;
+    total += subtotal;
+    html += `${item} x${dados.qtd} = R$ ${subtotal.toFixed(2)}<br>`;
+  }
+
+  let frete = total >= 30 ? 0 : 5;
+  html += `<br>Frete: R$ ${frete.toFixed(2)}`;
+  total += frete;
+
+  document.getElementById("carrinho").innerHTML = html;
+  document.getElementById("total").innerHTML = "Total: R$ " + total.toFixed(2);
+}
+
+function finalizar(){
+  let nome = document.getElementById("nome").value;
+  let endereco = document.getElementById("endereco").value;
+  let telefone = document.getElementById("telefone").value;
+  let horario = document.getElementById("horario").value;
+  let pagamento = document.getElementById("pagamento").value;
+
+  let mensagem = "🍻 Pedido:%0A";
+
+  let total = 0;
+
+  for(let item in carrinho){
+    let dados = carrinho[item];
+    let subtotal = dados.qtd * dados.preco;
+    total += subtotal;
+    mensagem += `${item} x${dados.qtd} = R$ ${subtotal.toFixed(2)}%0A`;
+  }
+
+  let frete = total >= 30 ? 0 : 5;
+  total += frete;
+
+  mensagem += `%0AFrete: R$ ${frete.toFixed(2)}`;
+  mensagem += `%0ATotal: R$ ${total.toFixed(2)}`;
+  mensagem += `%0APagamento: ${pagamento}`;
+  mensagem += `%0A%0ANome: ${nome}`;
+  mensagem += `%0AEndereço: ${endereco}`;
+  mensagem += `%0ATelefone: ${telefone}`;
+  mensagem += `%0AHorário: ${horario}`;
+
+  window.open(`https://wa.me/5544997410776?text=${mensagem}`);
+}
+</script>
+
+</body>
+</html>
